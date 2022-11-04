@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+.bg {
+    height: 100%;
+    background-position: center;
+    background-image: url("./img/bg.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    column-gap: 10px;
+}
+
+.list {
+    background-color: black;
+}
+.listHeader {
+    margin-top: 0px;
+    margin-left: 0px;
+
+}
