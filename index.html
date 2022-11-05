@@ -4,30 +4,55 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
 
+        <!-- Personal Styling -->
         <link rel="stylesheet" href="./style.css">
-        <script src="./script.js"></script>
 
         <title>Trello Copy</title>
     </head>
-
-    <body class="bg container">
-
-        <div class="list">
-            <h4 class="listHeader">Doing</h4>
-            
-            <div>
-                <button class="addCard">Add a card</button>
+    <body>
+        
+        <div id="root">
+            <div id="board">
+                <div class="lists">
+                    <p class="listHeader">Doing</p>
+                </div>
+                <div class="lists">
+                    <p class="listHeader">To Do</p>
+                </div>
+                <div class="lists">
+                    <p class="listHeader">Done</p>
+                </div>
+                <div class="lists" id="addListButton">
+                    <p class="listHeader">Add another list</p>
+                </div>
             </div>
         </div>
 
-        <div class="list">
-            <h4 class="listHeader">To Do</h4>
-            <button class="addCard">Add a card</button>
-        </div>
-
-        <div class="list">
-            <h4 class="listHeader">Done</h4>
-            <button class="addCard">Add a card</button>
-        </div>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <!-- Personal JavaScript -->
+        <script src="./script.js"></script>
     </body>
-</html> 
+</html>
+
+<!-- Notes 
+
+Possible Method To Drag Lists
+https://greensock.com/docs/v3/Plugins/Draggable/static.get()
+https://uxdesign.cc/creating-horizontal-scrolling-containers-the-right-way-css-grid-c256f64fc585
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-->
