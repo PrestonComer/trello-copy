@@ -13,13 +13,28 @@
         
         <div id="root">
             <div id="board">
-                <div class="lists">
+                <div id="doing"
+                    class="lists"
+                    draggable="true"
+                    ondragstart="drag(event)"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)">
                     <p class="listHeader">Doing</p>
                 </div>
-                <div class="lists">
+                <div id="todo"
+                    class="lists"
+                    draggable="true"
+                    ondragstart="drag(event)"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)">
                     <p class="listHeader">To Do</p>
                 </div>
-                <div class="lists">
+                <div id="done"
+                    class="lists"
+                    draggable="true"
+                    ondragstart="drag(event)"
+                    ondrop="drop(event)"
+                    ondragover="allowDrop(event)">
                     <p class="listHeader">Done</p>
                 </div>
                 <div class="lists" id="addListButton">
