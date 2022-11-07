@@ -1,6 +1,5 @@
 function addList() {
-    var numOfLists = $(".lists").length + 1;
-    numOfLists = numOfLists.toString();
+    var numOfLists = ($(".lists").length + 1).toString();
 
     var listTitle = prompt("Enter New List Title:");
     listTitle = listTitle ? listTitle : "No Title Given";
@@ -32,16 +31,14 @@ function getRandomColor() {
 }
 
 function addCard() {
-    var numOfCards = $(".cards").length + 1;
-    numOfCards = numOfCards.toString();
+    var numOfCards = ($(".cards").length + 1).toString();
 
-    // var cardTitle = prompt("Enter New List Title:");
-    // cardTitle = cardTitle ? cardTitle : "No Title Given";
-    var cardTitle = "Test";
-    var newId = cardTitle.replace(/\s/g, "") + numOfCards;
+    var cardTitle = prompt("Enter New List Title:");
+    cardTitle = cardTitle ? cardTitle : "No Title Given";
+
     $(this).before(
         '<div \
-            id="'+ newId + '" \
+            id="'+ cardTitle.replace(/\s/g, "") + numOfCards + '" \
             class="cards box" \
             draggable="true" \
             ondrop="dropCards(event)" \
@@ -57,60 +54,18 @@ function drag(e) {
     e.dataTransfer.setData("text", e.target.id);
 }
 
-function drop(e) {
-    e.preventDefault();
-    clone = e.target.cloneNode(true);
-    let data = e.dataTransfer.getData("text");
-    if (clone.id !== data) {
-        let nodelist = document.getElementById("board").childNodes;
-        for (let i=0;i<nodelist.length;i++) {
-            if(nodelist[i].id==data) {
-                dragindex=i;
-            }
-        }
-        document.getElementById("board").replaceChild(
-            document.getElementById(data),e.target
-        );
-        document.getElementById("board").insertBefore(
-            clone,
-            document.getElementById("board").childNodes[dragindex]
-        );
-    }
-}
-
 function dropCards(e) {
     var destination = e.target.parentNode;
-    var source = $("#"+e.dataTransfer.getData("Text"));
+    var source = document.getElementById(e.dataTransfer.getData("Text"));
 
-    console.log("destination", destination);
-    console.log("source", source);
-
-    if (destination.classList.contains("lists") && (source.hasClass("lists"))) {
-        console.log("Swapping Lists");
+    if (destination.classList.contains("lists") && (source.classList.contains("lists")) || destination.classList.contains("cards") && source.classList.contains("cards")) {
+        // This puts the source infront of the destination
+        destination.parentNode.insertBefore(source.cloneNode(true), destination);
+        // This puts the destination where the source was
+        source.parentNode.insertBefore(destination.cloneNode(true), source)
+        source.remove();
+        destination.remove();
     }
-    if (destination.classList.contains("cards") && (source.hasClass("cards"))) {
-        console.log("Swapping Cards");
-    }
-    // console.log(destination.parentNode);
-    // let clone = destination.cloneNode(true);
-
-    // destination.parentNode.replaceChild(
-    //     destination,
-    //     document.getElementById(e.dataTransfer.getData("Text"))
-    // )
-
-    // console.log("destination", destination);
-    // console.log("source", source)
-
-    // var nodeA = e.target;
-    // var nodeB = document.getElementById(e.dataTransfer.getData("Text"));
-    // var siblingA = nodeA.nextSibling === nodeB ? nodeA : nodeA.nextSibling;
-
-    // // Move `nodeA` to before the `nodeB`
-    // nodeB.parentNode.insertBefore(nodeA, nodeB);
-
-    // // Move `nodeB` to before the sibling of `nodeA`
-    // parentA.insertBefore(nodeB, siblingA);
 }
 
 function allowDrop(e) {
