@@ -81,9 +81,16 @@ function drop(e) {
 function dropCards(e) {
     var destination = e.target.parentNode;
     var source = $("#"+e.dataTransfer.getData("Text"));
+
     console.log("destination", destination);
     console.log("source", source);
 
+    if (destination.classList.contains("lists") && (source.hasClass("lists"))) {
+        console.log("Swapping Lists");
+    }
+    if (destination.classList.contains("cards") && (source.hasClass("cards"))) {
+        console.log("Swapping Cards");
+    }
     // console.log(destination.parentNode);
     // let clone = destination.cloneNode(true);
 
