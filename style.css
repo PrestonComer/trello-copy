@@ -31,11 +31,13 @@ html, body {
 
 .lists {
     width: 246px;
-    height: 100px;
+    /* min-height: 100px; */
     display: inline-block;
     background-color: black;
     color: white;
     margin: 5px;
+    vertical-align: top;
+    padding-bottom: 15px;
 }
 .listHeader {
     margin: 5px;
@@ -43,4 +45,28 @@ html, body {
 #addListButton {
     margin: 5px;
     height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.cards {
+    margin-top: 3%;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+
+.addCardButton {
+    background-color: lightblue;
+    color: #202324;
+    padding: 0;
+    margin-top: 10px;
+    width: 100%;
+    /* position: relative; */
+    /* top: 53%; */
+}
+.addCardButton::before {
+    content: '+';
+    margin-left: 6px;
+    margin-right: 6px;
 }
