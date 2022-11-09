@@ -1,7 +1,17 @@
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 function addList() {
     var numOfLists = ($(".lists").length + 1).toString();
 
-    var listTitle = prompt("Enter New List Title:");
+    // var listTitle = prompt("Enter New List Title:");
+    var listTitle = "List Title Placeholder";
     listTitle = listTitle ? listTitle : "No Title Given";
 
     $("#addListButton").before(
@@ -15,25 +25,20 @@ function addList() {
             <p class="listHeader"> \
                 '+ listTitle +' \
             </p> \
+            <a class="listDropdown"></a>\
             <div class="addCardButton">Add a card</div>\
         </div>'
     );
     $("#" + listTitle.replace(/\s/g, "") + numOfLists + " > div.addCardButton").on("click", addCard);
+    $(".listDropdown").on("click", openModal);
+    
 };
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
 function addCard() {
     var numOfCards = ($(".cards").length + 1).toString();
 
-    var cardTitle = prompt("Enter New List Title:");
+    // var cardTitle = prompt("Enter New List Title:");
+    var cardTitle = "Card Title Placeholder";
     cardTitle = cardTitle ? cardTitle : "No Title Given";
 
     $(this).before(
@@ -72,11 +77,37 @@ function allowDrop(e) {
     e.preventDefault();
 }
 
+function openModal() {
+    $("#myModal").css("display", "block");
+}
+function closeModal() {
+    $("#myModal").css("display", "none");
+}
+
 $(document).ready(function() {
     $("#addListButton").on("click", addList);
     $(".addCardButton").on("click", addCard);
+    $(".listDropdown").on("click", openModal);
+    $(".close").on("click", closeModal);
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == $("#myModal")) {
+            $("#myModal").style.display = "none";
+        }
+    }
 
     let dragindex=0;
     let dropindex=0;
     let clone="";
+
+    // // Get the modal
+    // var modal = document.getElementById("myModal");
+
+    // // Get the button that opens the modal
+    // // listDropdown
+    // var btn = document.getElementById("myBtn");
+
+    // // Get the <span> element that closes the modal
+    // var span = document.getElementsByClassName("close")[0];
 })
